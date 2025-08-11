@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar } from "recharts";
-import { TrendingUp, Calendar, BarChart3 } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar, Tooltip } from "recharts";
+import { TrendingUp, Calendar, BarChart3, Activity } from "lucide-react";
 
 export const PerformanceChart = () => {
   // Mock performance data
@@ -26,15 +26,31 @@ export const PerformanceChart = () => {
   const profitTarget = 500;
   const progressPercentage = (totalProfit / profitTarget) * 100;
 
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
+          <p className="font-medium">{label}</p>
+          {payload.map((entry: any, index: number) => (
+            <p key={index} className="text-sm" style={{ color: entry.color }}>
+              {entry.name}: ${entry.value}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
-    <Card className="bg-gradient-card shadow-card-custom">
+    <Card className="bg-gradient-card shadow-card-custom hover:shadow-glow transition-all duration-300">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="flex items-center">
-            <BarChart3 className="w-5 h-5 mr-2 text-primary" />
+            <Activity className="w-5 h-5 mr-2 text-primary" />
             Performance Overview
           </span>
-          <Badge variant="outline" className="text-primary">
+          <Badge variant={progressPercentage >= 100 ? "default" : "outline"} className={progressPercentage >= 100 ? "bg-success text-success-foreground" : "text-primary"}>
             {progressPercentage.toFixed(1)}% to target
           </Badge>
         </CardTitle>
@@ -42,7 +58,7 @@ export const PerformanceChart = () => {
       <CardContent className="space-y-6">
         {/* Account Balance Chart */}
         <div className="space-y-2">
-          <h4 className="font-medium text-sm">Account Balance Growth</h4>
+          <h4 className="font-medium text-sm flex items-center"><TrendingUp className="w-4 h-4 mr-2 text-success" />Account Balance Growth</h4>
           <div className="h-48 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={dailyPnL}>
@@ -53,6 +69,7 @@ export const PerformanceChart = () => {
                   fontSize={12}
                 />
                 <YAxis 
+                  domain={['dataMin - 50', 'dataMax + 50']}
                   stroke="hsl(var(--muted-foreground))" 
                   fontSize={12}
                   tickFormatter={(value) => `$${value}`}
@@ -65,6 +82,7 @@ export const PerformanceChart = () => {
                   dot={{ r: 4, fill: "hsl(var(--primary))" }}
                   activeDot={{ r: 6, fill: "hsl(var(--primary))" }}
                 />
+                <Tooltip content={<CustomTooltip />} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -72,7 +90,7 @@ export const PerformanceChart = () => {
 
         {/* Daily P&L Chart */}
         <div className="space-y-2">
-          <h4 className="font-medium text-sm">Daily P&L</h4>
+          <h4 className="font-medium text-sm flex items-center"><BarChart3 className="w-4 h-4 mr-2 text-warning" />Daily P&L</h4>
           <div className="h-32 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={dailyPnL}>
@@ -89,9 +107,10 @@ export const PerformanceChart = () => {
                 />
                 <Bar 
                   dataKey="pnl" 
-                  fill="hsl(var(--primary))"
+                  fill={(entry: any) => entry.pnl >= 0 ? "hsl(var(--success))" : "hsl(var(--destructive))"}
                   radius={[2, 2, 0, 0]}
                 />
+                <Tooltip content={<CustomTooltip />} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -108,6 +127,7 @@ export const PerformanceChart = () => {
               <div key={week.week} className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm font-medium">{week.week}</span>
+                  {index === 0 && <Badge variant="outline" className="text-xs">Current</Badge>}
                   <span className="text-xs text-muted-foreground">
                     (${week.achieved} / ${week.target})
                   </span>
