@@ -28,25 +28,25 @@ export const TradingJournal = () => {
       id: "1",
       date: new Date("2024-01-08T10:30:00"),
       instrument: "XAUUSD",
-      setup: "Perfect PO3 Distribution phase. Liquidity sweep at 2640 support, then strong rejection. Entry on retest of broken structure.",
+      setup: "Perfect PO3 Distribution phase. External liquidity sweep at 2640 EQ lows, BOS confirmation with body close. Entry at refined 15M OB + FVG confluence with POC reaction.",
       outcome: "win",
       pnl: 45.50,
-      lessons: "Patience paid off. Waited for the full PO3 cycle to complete before entering. Risk management was perfect at 0.75%.",
-      emotions: "Confident and disciplined. No FOMO, stuck to the plan completely.",
+      lessons: "Framework executed perfectly. HTF bias aligned, waited for purge-BOS-entry sequence. Volume confluence at POC confirmed institutional interest. 2R target hit as planned.",
+      emotions: "Calm and disciplined. No FOMO, followed checklist completely. Walked away at 2R as per psychology filter.",
       rating: 5,
-      tags: ["PO3", "Distribution", "Liquidity Sweep", "Perfect Entry"]
+      tags: ["PO3", "Distribution", "External Sweep", "POC Confluence", "CRT Signal", "2R Exit"]
     },
     {
       id: "2",
       date: new Date("2024-01-05T14:15:00"),
       instrument: "US30",
-      setup: "Manipulation phase identified but entered too early. Price hadn't fully completed the liquidity grab.",
+      setup: "Markup phase identified but violated framework. Entered without proper purge confirmation. Missing 15M CHoCH alignment with HTF bias.",
       outcome: "loss",
       pnl: -18.25,
-      lessons: "Need to be more patient with PO3 phases. The manipulation wasn't complete - should have waited for the full sweep.",
-      emotions: "Slightly impatient. Saw the setup forming and jumped in too quickly.",
+      lessons: "Framework violation: Entered without completing critical checklist items. No purge confirmation, weak BOS signal. Must stick to 'purge first, BOS second, entry last' sequence.",
+      emotions: "FOMO triggered entry. Rushed decision without proper confirmation. Need to enforce psychology filter more strictly.",
       rating: 2,
-      tags: ["PO3", "Manipulation", "Early Entry", "Impatience"]
+      tags: ["PO3", "Markup", "Framework Violation", "FOMO", "No Purge", "Lesson Learned"]
     }
   ]);
 

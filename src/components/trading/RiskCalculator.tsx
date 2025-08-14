@@ -196,41 +196,51 @@ export const RiskCalculator = ({ accountBalance, phase }: RiskCalculatorProps) =
 
           {/* Instrument-Specific Guidelines */}
           <div className="p-4 bg-secondary/10 rounded-lg">
-            <h4 className="font-medium mb-2">{instrument} Trading Guidelines:</h4>
+            <h4 className="font-medium mb-2">{instrument} PO3 Framework Guidelines:</h4>
             <div className="text-sm space-y-1">
               {instrument === "XAUUSD" && (
                 <>
-                  <p>• Best during London/NY overlap (8:00-11:00 EST)</p>
-                  <p>• Typical stop: $5-15, strong trends can run for days</p>
-                  <p>• Extreme reaction to USD, inflation, geopolitics</p>
+                  <p>• <strong>HTF Bias:</strong> Strong institutional flows, clear PO3 phases</p>
+                  <p>• <strong>Liquidity:</strong> Major EQ highs/lows around psychological levels</p>
+                  <p>• <strong>Volume:</strong> Watch POC reactions at key levels (2600, 2650, 2700)</p>
+                  <p>• <strong>Sessions:</strong> London/NY overlap for best liquidity sweeps</p>
+                  <p>• <strong>Risk:</strong> $5-15 stops, respect major structure levels</p>
                 </>
               )}
               {instrument === "US30" && (
                 <>
-                  <p>• Focus on 9:30-16:00 EST (New York session)</p>
-                  <p>• Typical stop: 15-30 points, slower steady trends</p>
-                  <p>• Moderate reaction to economic data</p>
+                  <p>• <strong>HTF Bias:</strong> Clear institutional accumulation/distribution zones</p>
+                  <p>• <strong>Liquidity:</strong> EQ highs/lows at major psychological levels</p>
+                  <p>• <strong>Volume:</strong> Strong POC reactions, watch HVN/LVN dynamics</p>
+                  <p>• <strong>Sessions:</strong> NY session 9:30-16:00 EST for best setups</p>
+                  <p>• <strong>Risk:</strong> 15-30 point stops, respect daily/weekly levels</p>
                 </>
               )}
               {instrument === "NAS100" && (
                 <>
-                  <p>• Fast explosive moves, quick execution required</p>
-                  <p>• Typical stop: 5-15 points, moves fast both ways</p>
-                  <p>• Reduce size 50% during tech earnings</p>
+                  <p>• <strong>HTF Bias:</strong> Volatile PO3 phases, quick transitions</p>
+                  <p>• <strong>Liquidity:</strong> Rapid sweeps, watch for false moves</p>
+                  <p>• <strong>Volume:</strong> Micro POC analysis crucial for trap detection</p>
+                  <p>• <strong>Sessions:</strong> Pre-market and first hour for best setups</p>
+                  <p>• <strong>Risk:</strong> 5-15 point stops, reduce size during earnings</p>
                 </>
               )}
               {instrument === "SPX500" && (
                 <>
-                  <p>• Most balanced, good for all timeframes</p>
-                  <p>• Typical stop: 10-25 points</p>
-                  <p>• Textbook PO3 patterns, follows institutional flow</p>
+                  <p>• <strong>HTF Bias:</strong> Textbook PO3 patterns, institutional favorite</p>
+                  <p>• <strong>Liquidity:</strong> Clean sweeps, reliable BOS confirmations</p>
+                  <p>• <strong>Volume:</strong> Excellent POC reactions, clear HVN/LVN zones</p>
+                  <p>• <strong>Sessions:</strong> All sessions work, best during NY hours</p>
+                  <p>• <strong>Risk:</strong> 10-25 point stops, most reliable for framework</p>
                 </>
               )}
               {instrument === "GER40" && (
                 <>
-                  <p>• Trade only 2:00-11:00 EST (European hours)</p>
-                  <p>• Typical stop: 12+ points, similar to NAS100</p>
-                  <p>• Avoid during US market overlap (confusing signals)</p>
+                  <p>• <strong>HTF Bias:</strong> European institutional flows, clear phases</p>
+                  <p>• <strong>Liquidity:</strong> Best sweeps during European session</p>
+                  <p>• <strong>Volume:</strong> Watch POC during 2:00-11:00 EST only</p>
+                  <p>• <strong>Sessions:</strong> European hours only, avoid US overlap</p>
+                  <p>• <strong>Risk:</strong> 12+ point stops, similar to NAS dynamics</p>
                 </>
               )}
             </div>

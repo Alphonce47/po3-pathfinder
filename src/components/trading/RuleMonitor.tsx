@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { AlertTriangle, CheckCircle, Clock, DollarSign, TrendingUp, Shield } from "lucide-react";
+import { AlertTriangle, CheckCircle, Clock, DollarSign, TrendingUp, Shield, Target, Brain } from "lucide-react";
 
 interface RuleMonitorProps {
   expanded?: boolean;
@@ -36,6 +36,24 @@ export const RuleMonitor = ({ expanded = false }: RuleMonitorProps) => {
       current: 0,
       limit: 75,
       icon: <Shield className="w-4 h-4" />
+    },
+    {
+      id: "po3_alignment",
+      name: "PO3 Framework Alignment",
+      description: "HTF bias, zones, and liquidity logic must align",
+      status: "compliant",
+      current: "All systems aligned",
+      limit: "Required for entry",
+      icon: <Target className="w-4 h-4" />
+    },
+    {
+      id: "psychology_check",
+      name: "Psychology Filter",
+      description: "No FOMO, revenge trading, or red folder violations",
+      status: "compliant",
+      current: "Mental state: Calm",
+      limit: "Required discipline",
+      icon: <Brain className="w-4 h-4" />
     },
     {
       id: "drawdown",
@@ -187,26 +205,35 @@ export const RuleMonitor = ({ expanded = false }: RuleMonitorProps) => {
       <Card className="bg-gradient-card shadow-card-custom">
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
-            <AlertTriangle className="w-5 h-5 text-warning" />
-            <span>Emergency Protocols</span>
+            <Target className="w-5 h-5 text-primary" />
+            <span>PO3 Framework Protocols</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="p-3 bg-warning/10 border border-warning/20 rounded-lg">
-              <h4 className="font-medium text-warning mb-2">At 3% Drawdown:</h4>
+            <div className="p-3 bg-primary/10 border border-primary/20 rounded-lg">
+              <h4 className="font-medium text-primary mb-2">Core Philosophy:</h4>
               <ul className="text-sm space-y-1 list-disc list-inside">
-                <li>Reduce risk to 0.25% per trade</li>
-                <li>Increase setup quality requirements</li>
-                <li>Implement mandatory 24-hour breaks between trades</li>
+                <li>Trade like a bank. Enter like a sniper. Exit like a robot.</li>
+                <li>Only trade when all systems align: HTF bias, refined zones, liquidity logic</li>
+                <li>Risk only when market shows its hand — purge first, BOS second, entry last</li>
+              </ul>
+            </div>
+            <div className="p-3 bg-warning/10 border border-warning/20 rounded-lg">
+              <h4 className="font-medium text-warning mb-2">Red Folder Protocol:</h4>
+              <ul className="text-sm space-y-1 list-disc list-inside">
+                <li>No trading during FOMC, ECB, NFP events</li>
+                <li>Avoid high-impact news releases</li>
+                <li>Wait for clear market structure post-news</li>
               </ul>
             </div>
             <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
-              <h4 className="font-medium text-destructive mb-2">At 5% Drawdown:</h4>
+              <h4 className="font-medium text-destructive mb-2">Psychology Violations:</h4>
               <ul className="text-sm space-y-1 list-disc list-inside">
-                <li>Stop trading for 48 hours minimum</li>
-                <li>Complete comprehensive journal review</li>
-                <li>Return with paper trading first</li>
+                <li>FOMO entry = immediate stop for the day</li>
+                <li>Revenge trading = 24-hour trading ban</li>
+                <li>Chasing moves = review strategy checklist</li>
+                <li>Walk away at 2R - protect mental capital</li>
               </ul>
             </div>
           </div>

@@ -77,7 +77,7 @@ export const MarketOverview = () => {
   const economicEvents = [
     { time: "08:30", event: "US CPI m/m", impact: "high", forecast: "0.3%", previous: "0.4%" },
     { time: "10:00", event: "US Core CPI y/y", impact: "high", forecast: "3.2%", previous: "3.3%" },
-    { time: "14:00", event: "Fed Chair Powell Speech", impact: "high", forecast: "-", previous: "-" },
+    { time: "14:00", event: "FOMC Meeting Minutes", impact: "high", forecast: "-", previous: "-" },
     { time: "15:30", event: "US Crude Oil Inventories", impact: "medium", forecast: "-2.1M", previous: "-5.1M" }
   ];
 
@@ -200,18 +200,29 @@ export const MarketOverview = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Clock className="w-5 h-5 text-primary" />
-            <span>Today's Economic Events</span>
+            <span>Today's Economic Events (Red Folder Check)</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
+          <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+            <p className="text-sm font-medium text-destructive mb-1">⚠️ Red Folder Protocol Active</p>
+            <p className="text-xs text-muted-foreground">
+              No trading during FOMC, ECB, NFP, or other high-impact events. Wait for clear structure post-news.
+            </p>
+          </div>
           <div className="space-y-3">
             {economicEvents.map((event, index) => (
-              <div key={index} className="flex items-center justify-between p-3 border border-border rounded-lg">
+              <div key={index} className={`flex items-center justify-between p-3 border rounded-lg ${
+                event.impact === 'high' ? 'border-destructive/50 bg-destructive/5' : 'border-border'
+              }`}>
                 <div className="flex items-center space-x-4">
                   <div className="text-sm font-mono font-medium">{event.time}</div>
                   <div className="flex items-center space-x-2">
                     <Zap className={`w-3 h-3 ${getImpactColor(event.impact)}`} />
                     <span className="font-medium">{event.event}</span>
+                    {event.impact === 'high' && (
+                      <Badge variant="destructive" className="text-xs">RED FOLDER</Badge>
+                    )}
                   </div>
                 </div>
                 <div className="text-right text-sm">

@@ -12,6 +12,7 @@ import { RuleMonitor } from "@/components/trading/RuleMonitor";
 import { PerformanceChart } from "@/components/trading/PerformanceChart";
 import { MarketOverview } from "@/components/trading/MarketOverview";
 import { TradingJournal } from "@/components/trading/TradingJournal";
+import { StrategyChecklist } from "@/components/trading/StrategyChecklist";
 import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
@@ -146,7 +147,8 @@ const Dashboard = () => {
 
       {/* Main Dashboard Tabs */}
       <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 h-auto">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto">
+          <TabsTrigger value="checklist">Checklist</TabsTrigger>
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="market">Market</TabsTrigger>
           <TabsTrigger value="logger">Trade Logger</TabsTrigger>
@@ -154,6 +156,10 @@ const Dashboard = () => {
           <TabsTrigger value="rules">Rule Monitor</TabsTrigger>
           <TabsTrigger value="journal">Journal</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="checklist" className="space-y-6">
+          <StrategyChecklist />
+        </TabsContent>
 
         <TabsContent value="overview" className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

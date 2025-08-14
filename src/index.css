@@ -163,4 +163,20 @@ All colors MUST be HSL.
   .hover\:shadow-glow:hover {
     box-shadow: var(--shadow-glow);
   }
+  
+  /* PO3 Framework specific styles */
+  .po3-critical {
+    border-left: 4px solid hsl(var(--destructive));
+  }
+  
+  .po3-complete {
+    background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success)) 100%);
+    color: hsl(var(--success-foreground));
+  }
+  
+  .red-folder-warning {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-color: hsl(var(--destructive));
+    background-color: hsl(var(--destructive) / 0.1);
+  }
 }
