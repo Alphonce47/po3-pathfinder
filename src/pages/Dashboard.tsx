@@ -13,6 +13,8 @@ import { PerformanceChart } from "@/components/trading/PerformanceChart";
 import { MarketOverview } from "@/components/trading/MarketOverview";
 import { TradingJournal } from "@/components/trading/TradingJournal";
 import { StrategyChecklist } from "@/components/trading/StrategyChecklist";
+import { AccountConnection } from "@/components/trading/AccountConnection";
+import { LivePositions } from "@/components/trading/LivePositions";
 import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
@@ -146,9 +148,11 @@ const Dashboard = () => {
       </Card>
 
       {/* Main Dashboard Tabs */}
-      <Tabs defaultValue="overview" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 h-auto">
+      <Tabs defaultValue="checklist" className="space-y-6">
+        <TabsList className="grid w-full grid-cols-4 md:grid-cols-9 h-auto">
           <TabsTrigger value="checklist">Checklist</TabsTrigger>
+          <TabsTrigger value="accounts">Accounts</TabsTrigger>
+          <TabsTrigger value="positions">Positions</TabsTrigger>
           <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="market">Market</TabsTrigger>
           <TabsTrigger value="logger">Trade Logger</TabsTrigger>
@@ -159,6 +163,14 @@ const Dashboard = () => {
 
         <TabsContent value="checklist" className="space-y-6">
           <StrategyChecklist />
+        </TabsContent>
+
+        <TabsContent value="accounts" className="space-y-6">
+          <AccountConnection />
+        </TabsContent>
+
+        <TabsContent value="positions" className="space-y-6">
+          <LivePositions />
         </TabsContent>
 
         <TabsContent value="overview" className="space-y-6">
